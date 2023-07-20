@@ -1,7 +1,31 @@
-.hello{
-    color:red;
+.container {
+  width: 26rem;
+  background: ghostwhite;
 }
 
-body {
-    background-color: bisque;
+.icon {
+  background: url('../assets/icons/options.svg');
+  background-repeat: no-repeat;
+  background-position: 95% 25%;
+}
+
+#heading {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#add {
+  outline: none;
+  border: none;
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
+  background: none;
+}
+
+#clear {
+  padding: 18px;
+  font-style: italic;
+  font-weight: 200;
+  cursor: pointer;
 }
