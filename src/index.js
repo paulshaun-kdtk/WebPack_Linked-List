@@ -6,7 +6,8 @@ import {
   attachEventListeners,
 } from './engine.js';
 
-// Call the initial setup functions
+
 loadTasksFromLocalStorage();
 displayItemsByIndex();
 attachEventListeners();
+
