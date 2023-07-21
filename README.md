@@ -30,7 +30,7 @@
 
 # 📖 toDo List <a name="about-project"></a>
 
-**Awesome Books** An online task manager that allows users set goals and their follow up on them later.
+**toDo List Books** An online task manager that allows users set goals and their follow up on them later.
 
 ## 🛠 Built With <a name="built-with"></a>
 The app is built using Webpack as a bundler.
@@ -68,7 +68,7 @@ Example command:
 
 ### Setup
 - Clone the repository to desired directory on local computer
-> `git clone https://github.com/wacoo/Awesome-Books.git`
+> `https://github.com/paulshaun-kdtk/WebPack_Linked-List`
 
 ## 👥 Author <a name="authors"></a>
 - Instagram: [@_shaun_s](https://www.instagram.com/_.shaun.s_/)
