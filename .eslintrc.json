@@ -19,7 +19,8 @@
       }],
       "vars-on-top": "off",
       "import/no-extraneous-dependencies": "off",
-      "no-console": "off"
+      "no-console": "off",
+      "no-use-before-define": "off"
         },
     "ignorePatterns": [
       "dist/",

@@ -6,7 +6,7 @@ import {
   displayItemsByIndex,
   addTask,
   editTaskDescription,
-  attachEventListeners
+  attachEventListeners,
 } from './engine.js';
 
 loadTasksFromLocalStorage();
