@@ -9,11 +9,62 @@ const loadTasksFromLocalStorage = () => {
   }
 };
 
-// Save and update local storage
-const saveTasksToLocalStorage = () => {
-  localStorage.setItem('todoList', JSON.stringify(list));
-  const filteredList = list.filter((task) => !task.completed);
-  localStorage.setItem('todoList', JSON.stringify(filteredList));
+// Event listeners for the checkboxes and delete buttons
+const attachEventListeners = () => {
+  list.forEach((item) => {
+    const { index } = item;
+    const completedRadio = document.querySelector(`input[name="completed_${index}"]`);
+
+    completedRadio.addEventListener('change', () => {
+      item.completed = completedRadio.checked;
+      saveTasksToLocalStorage();
+    });
+  });
+};
+
+const Delete = document.getElementById('clear');
+
+Delete.addEventListener('click', () => {
+  list = list.filter((item) => !item.completed);
+  saveTasksToLocalStorage();
+  displayItemsByIndex();
+});
+
+// Add a new task
+const addTask = (description) => {
+  const task = {
+    description,
+    completed: false,
+    index: list.length + 1,
+  };
+
+  list.push(task);
+  saveTasksToLocalStorage();
+  displayItemsByIndex();
+};
+
+document.getElementById('addTaskButton').addEventListener('click', () => {
+  const taskInput = document.getElementById('taskInput');
+  const description = taskInput.value.trim();
+
+  if (description !== '') {
+    addTask(description);
+  }
+
+  taskInput.value = '';
+});
+
+// Edit task descriptionf
+const editTaskDescription = (index, newDescription) => {
+  const taskIndex = index - 1;
+
+  if (taskIndex >= 0 && taskIndex < list.length) {
+    list[taskIndex].description = newDescription;
+    saveTasksToLocalStorage();
+    displayItemsByIndex();
+  } else {
+    alert('please add a task to init app');
+  }
 };
 
 // Display tasks
@@ -65,69 +116,18 @@ const displayItemsByIndex = () => {
   });
 };
 
-// Add a new task
-const addTask = (description) => {
-  const task = {
-    description,
-    completed: false,
-    index: list.length + 1,
-  };
-
-  list.push(task);
-  saveTasksToLocalStorage();
-  displayItemsByIndex();
+// Save and update local storage
+const saveTasksToLocalStorage = () => {
+  localStorage.setItem('todoList', JSON.stringify(list));
+  const filteredList = list.filter((task) => !task.completed);
+  localStorage.setItem('todoList', JSON.stringify(filteredList));
 };
-
-document.getElementById('addTaskButton').addEventListener('click', () => {
-  const taskInput = document.getElementById('taskInput');
-  const description = taskInput.value.trim();
-
-  if (description !== '') {
-    addTask(description);
-  }
-
-  taskInput.value = '';
-});
-
-// Edit task descriptionf
-const editTaskDescription = (index, newDescription) => {
-  const taskIndex = index - 1;
-
-  if (taskIndex >= 0 && taskIndex < list.length) {
-    list[taskIndex].description = newDescription;
-    saveTasksToLocalStorage();
-    displayItemsByIndex();
-  } else {
-    alert('Invalid task index.');
-  }
-};
-
-// Event listeners for the checkboxes and delete buttons
-const attachEventListeners = () => {
-  list.forEach((item) => {
-    const { index } = item;
-    const completedRadio = document.querySelector(`input[name="completed_${index}"]`);
-
-    completedRadio.addEventListener('change', () => {
-      item.completed = completedRadio.checked;
-      saveTasksToLocalStorage();
-    });
-  });
-};
-
-const Delete = document.getElementById('clear');
-
-Delete.addEventListener('click', () => {
-  list = list.filter((item) => !item.completed);
-  saveTasksToLocalStorage();
-  displayItemsByIndex();
-});
 
 export {
   loadTasksFromLocalStorage,
-  saveTasksToLocalStorage,
   displayItemsByIndex,
+  attachEventListeners,
   addTask,
   editTaskDescription,
-  attachEventListeners,
+  saveTasksToLocalStorage,
 };

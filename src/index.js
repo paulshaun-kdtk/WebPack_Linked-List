@@ -2,16 +2,11 @@ import './style.css';
 
 import {
   loadTasksFromLocalStorage,
-  saveTasksToLocalStorage,
   displayItemsByIndex,
-  addTask,
-  editTaskDescription,
   attachEventListeners,
 } from './engine.js';
 
+// Call the initial setup functions
 loadTasksFromLocalStorage();
 displayItemsByIndex();
-addTask();
-editTaskDescription();
 attachEventListeners();
-saveTasksToLocalStorage();
