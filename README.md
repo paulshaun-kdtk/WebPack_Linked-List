@@ -28,7 +28,7 @@
 
 <!-- PROJECT DESCRIPTION  -->
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 toDo List <a name="about-project"></a>
 
 **Awesome Books** An online task manager that allows users set goals and their follow up on them later.
 
