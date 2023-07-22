@@ -1,3 +1,5 @@
+import { handleCompletionChange, handleEditClick } from './checkbox.js';
+
 let list = [];
 const listContainer = document.getElementById('listContainer');
 
@@ -91,18 +93,13 @@ const displayItemsByIndex = () => {
     edit.textContent = 'Edit task';
 
     // Handle checkbox change event
+
     completedRadio.addEventListener('change', () => {
-      item.completed = completedRadio.checked;
-      saveTasksToLocalStorage();
+      handleCompletionChange(item, completedRadio, saveTasksToLocalStorage);
     });
 
     edit.addEventListener('click', () => {
-      const newDescription = prompt('Enter the new description:');
-      if (newDescription !== '') {
-        editTaskDescription(index, newDescription);
-      } else {
-        alert('description must be at least two chars');
-      }
+      handleEditClick(index, editTaskDescription);
     });
 
     listItem.appendChild(completedRadio);
