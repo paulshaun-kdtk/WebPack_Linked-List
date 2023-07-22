@@ -203,8 +203,6 @@ const editTaskDescriptionInline = (item, deleteButton, deleteIcon, completedRadi
 // Save and update local storage
 const saveTasksToLocalStorage = () => {
   localStorage.setItem('todoList', JSON.stringify(list));
-  const filteredList = list.filter((task) => !task.completed);
-  localStorage.setItem('todoList', JSON.stringify(filteredList));
 };
 
 export {
