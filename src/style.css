@@ -39,3 +39,28 @@
   padding: 10px;
   background: transparent;
 }
+
+.icon2 {
+  border: none;
+  background: url('../assets/icons/options.svg');
+  padding: 15px;
+  background-repeat: no-repeat;
+  margin-left: 50%;
+}
+
+.icon3 {
+  border: none;
+  background: url('../assets/icons/delete.svg');
+  padding: 15px;
+  background-repeat: no-repeat;
+  display: none;
+  margin-left: 50%;
+}
+
+.editField {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 12px;
+  background: rgba(237, 237, 13, 0.9);
+}

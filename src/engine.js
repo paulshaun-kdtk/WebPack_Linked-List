@@ -63,9 +63,25 @@ const editTaskDescription = (index, newDescription) => {
     saveTasksToLocalStorage();
     displayItemsByIndex();
   } else {
-    alert('please add a task to init app');
+    alert('Please add a task to initialize the app.');
   }
 };
+
+// delete task
+function deleteTask(index) {
+  const taskIndex = index - 1;
+
+  if (taskIndex >= -1 && taskIndex < list.length) {
+    list.splice(taskIndex, 1);
+    list.forEach((task, i) => {
+      task.index = i + 1;
+    });
+    saveTasksToLocalStorage();
+    displayItemsByIndex();
+  } else {
+    alert('Invalid task index.');
+  }
+}
 
 // Display tasks
 const displayItemsByIndex = () => {
@@ -79,16 +95,22 @@ const displayItemsByIndex = () => {
     const completedRadio = document.createElement('input');
     const edit = document.createElement('button');
     const hr = document.createElement('hr');
+    const deleteIcon = document.createElement('button');
+    const deleteButton = document.createElement('button');
 
     edit.classList.add('edit-task');
+    deleteButton.classList.add('icon3');
+    deleteIcon.classList.add('icon2');
 
-    listItem.classList.add('icon');
+    descriptionSpan.setAttribute('data-index', index);
 
     descriptionSpan.textContent = description;
     completedRadio.type = 'checkbox';
     completedRadio.name = `completed_${index}`;
     completedRadio.checked = completed;
     edit.textContent = 'Edit task';
+    deleteButton.textContent = '';
+    deleteIcon.textContent = '';
 
     // Handle checkbox change event
     completedRadio.addEventListener('change', () => {
@@ -96,24 +118,86 @@ const displayItemsByIndex = () => {
       saveTasksToLocalStorage();
     });
 
-    edit.addEventListener('click', () => {
-      const newDescription = prompt('Enter the new description:');
-      if (newDescription !== '') {
-        editTaskDescription(index, newDescription);
-      } else {
-        alert('description must be at least two chars');
-      }
+    descriptionSpan.addEventListener('dblclick', () => {
+      editTaskDescriptionInline(item, deleteButton, deleteIcon, completedRadio);
+    });
+
+    deleteIcon.addEventListener('click', () => {
+      toggleDeleteButton(deleteIcon);
+    });
+
+    deleteButton.addEventListener('click', () => {
+      deleteTask(index);
     });
 
     listItem.appendChild(completedRadio);
-    listItem.appendChild(edit);
     listItem.appendChild(descriptionSpan);
+    listItem.appendChild(deleteIcon);
+    listItem.appendChild(deleteButton);
     listItem.appendChild(hr);
 
     listContainer.appendChild(listItem);
 
     document.getElementById('taskInput').value = '';
   });
+};
+
+const toggleDeleteButton = (deleteIcon) => {
+  const listItem = deleteIcon.parentElement;
+  const deleteButton = listItem.querySelector('.icon3');
+
+  if (deleteButton.style.display === 'none') {
+    deleteButton.style.display = 'inline-block';
+    deleteIcon.style.display = 'none';
+  } else {
+    deleteButton.style.display = 'none';
+    deleteIcon.style.display = 'inline-block';
+  }
+};
+
+// Edit task description
+const editTaskDescriptionInline = (item, deleteButton, deleteIcon, completedRadio) => {
+  const { index } = item;
+
+  const descriptionSpan = document.querySelector(`span[data-index="${index}"]`);
+  const currentDescription = descriptionSpan.textContent;
+
+  const inputField = document.createElement('input');
+  inputField.value = currentDescription;
+  inputField.classList.add('editField');
+
+  inputField.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      const newDescription = inputField.value.trim();
+      if (newDescription !== '') {
+        editTaskDescription(index, newDescription);
+      } else {
+        alert('Description must be at least two characters.');
+      }
+    } else if (event.key === 'Escape') {
+      inputField.value = currentDescription;
+      inputField.blur();
+    }
+  });
+
+  inputField.addEventListener('blur', () => {
+    const newDescription = inputField.value.trim();
+    if (newDescription !== '') {
+      editTaskDescription(index, newDescription);
+    } else {
+      inputField.value = currentDescription;
+    }
+  });
+
+  if (inputField.style.display !== 'none') {
+    deleteButton.style.display = 'none';
+    deleteIcon.style.display = 'none';
+    completedRadio.style.display = 'none';
+  }
+
+  descriptionSpan.textContent = '';
+  descriptionSpan.appendChild(inputField);
+  inputField.focus();
 };
 
 // Save and update local storage
