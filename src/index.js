@@ -86,7 +86,6 @@ function deleteTask(index, list) {
 
     return true;
   } else {
-    alert('Invalid task index.');
     return false;
   }
 }
