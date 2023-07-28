@@ -70,7 +70,7 @@ const editTaskDescription = (index, newDescription) => {
 };
 
 // delete task
-function deleteTask(index, list) {
+function deleteTask(index) {
   const taskIndex = index - 1;
 
   if (taskIndex >= 0 && taskIndex < list.length) {

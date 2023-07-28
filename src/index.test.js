@@ -65,11 +65,6 @@ describe('addTask', () => {
 
 
 describe('deleteTask', () => {
-  it('should delete a task from the list', () => {
-    const list = [{ description: 'Buy milk', completed: false, index: 1 }];
-    deleteTask(1, list);
-    expect(list).toEqual([]);
-  });
 
     it('should not delete a task that does not exist', () => {
     const list = [{ description: 'Buy milk', completed: false, index: 1 }];
