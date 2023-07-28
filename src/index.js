@@ -82,10 +82,9 @@ function deleteTask(index) {
     if (listContainer) {
       displayItemsByIndex();
     }
-
     return true;
   }
-  return false;
+  return true;
 }
 
 // Display tasks
