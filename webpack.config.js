@@ -8,10 +8,6 @@ module.exports = {
       import: './src/index.js',
       filename: 'index.bundle.js',
     },
-    print: {
-      import: './src/print.js',
-      filename: 'print.bundle.js',
-    },
   },
   devtool: 'inline-source-map',
   devServer: {

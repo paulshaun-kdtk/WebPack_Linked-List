@@ -1,6 +1,7 @@
-.container {
-  width: 26rem;
+.Container {
   background: ghostwhite;
+  width: 40%;
+  margin-left: 30%;
 }
 
 .icon {
@@ -38,4 +39,29 @@
   font-weight: 100;
   padding: 10px;
   background: transparent;
+}
+
+.icon2 {
+  border: none;
+  background: url('./options.svg');
+  padding: 15px;
+  background-repeat: no-repeat;
+  margin-left: 50%;
+}
+
+.icon3 {
+  border: none;
+  background: url('./delete.svg');
+  padding: 15px;
+  background-repeat: no-repeat;
+  display: none;
+  margin-left: 50%;
+}
+
+.editField {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 12px;
+  background: rgba(237, 237, 13, 0.9);
 }
