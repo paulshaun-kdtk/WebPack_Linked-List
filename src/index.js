@@ -65,7 +65,6 @@ const editTaskDescription = (index, newDescription) => {
   } else {
     saveTasksToLocalStorage();
     displayItemsByIndex();
-    alert('Please add a task to initialize the app.');
   }
 };
 
