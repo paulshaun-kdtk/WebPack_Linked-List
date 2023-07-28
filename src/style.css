@@ -43,7 +43,7 @@
 
 .icon2 {
   border: none;
-  background: url('../assets/icons/options.svg');
+  background: url('./options.svg');
   padding: 15px;
   background-repeat: no-repeat;
   margin-left: 50%;
@@ -51,7 +51,7 @@
 
 .icon3 {
   border: none;
-  background: url('../assets/icons/delete.svg');
+  background: url('./delete.svg');
   padding: 15px;
   background-repeat: no-repeat;
   display: none;
