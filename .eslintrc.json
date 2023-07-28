@@ -22,7 +22,7 @@
       "no-console": "off",
       "no-use-before-define": "off",
       "no-unused-vars": "off",
-      "no-unused-expressions": "off"
+      
         },
     "ignorePatterns": [
       "dist/",
