@@ -1,4 +1,3 @@
-
 let list = [];
 const listContainer = document.getElementById('listContainer');
 
@@ -33,16 +32,18 @@ Delete.addEventListener('click', () => {
 
 // Add a new task
 const addTask = (description) => {
-  const task = {
-    description,
-    completed: false,
-    index: list.length + 1,
-  };
+  if (description.trim() !== '') {
+    const task = {
+      description,
+      completed: false,
+      index: list.length + 1,
+    };
 
-  list.push(task);
-  saveTasksToLocalStorage();
-  displayItemsByIndex();
-  return task;
+    list.push(task);
+    saveTasksToLocalStorage();
+    displayItemsByIndex();
+
+   }
 };
 
 document.getElementById('addTaskButton').addEventListener('click', () => {
@@ -52,7 +53,6 @@ document.getElementById('addTaskButton').addEventListener('click', () => {
   if (description !== '') {
     addTask(description);
   }
-
   taskInput.value = '';
 });
 
@@ -70,19 +70,24 @@ const editTaskDescription = (index, newDescription) => {
 };
 
 // delete task
-function deleteTask(index) {
+function deleteTask(index, list) {
   const taskIndex = index - 1;
 
-  if (taskIndex >= -1 && taskIndex < list.length) {
+  if (taskIndex >= 0 && taskIndex < list.length) {
     list.splice(taskIndex, 1);
     list.forEach((task, i) => {
       task.index = i + 1;
     });
     saveTasksToLocalStorage();
-    displayItemsByIndex();
-    return list
+
+    if (listContainer) {
+      displayItemsByIndex();
+    }
+
+    return true;
   } else {
     alert('Invalid task index.');
+    return false;
   }
 }
 

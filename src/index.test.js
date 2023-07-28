@@ -57,13 +57,13 @@ displayItemsByIndex();
 describe('addTask', () => {
   it('should add a task to the list', () => {
     const list = [];
-    addTask('Buy milk');
+    addTask('Buy milk', list);
     expect(list).toEqual([{ description: 'Buy milk', completed: false, index: 1 }]);
   });
 
   it('should not add a task with a blank description', () => {
     const list = [];
-    addTask('');
+    addTask('', list);
     expect(list).toEqual([]);
   });
 });
@@ -73,13 +73,14 @@ describe('addTask', () => {
 describe('deleteTask', () => {
   it('should delete a task from the list', () => {
     const list = [{ description: 'Buy milk', completed: false, index: 1 }];
-    deleteTask();
-    expect(1).toEqual([]);
+    deleteTask(1, list);
+    expect(list).toEqual([]);
   });
 
-  it('should not delete a task that does not exist', () => {
+    it('should not delete a task that does not exist', () => {
     const list = [{ description: 'Buy milk', completed: false, index: 1 }];
-    deleteTask(2);
+    const result = deleteTask(2, list);
+    expect(result).toBe(false);
     expect(list).toEqual([{ description: 'Buy milk', completed: false, index: 1 }]);
   });
 });
