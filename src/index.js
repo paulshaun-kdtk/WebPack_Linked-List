@@ -9,13 +9,12 @@ const loadTasksFromLocalStorage = () => {
   }
 };
 
-
 const attachEventListeners = () => {
   list.forEach((item) => {
     const { index } = item;
     const completedRadio = document.querySelector(`input[name="completed_${index}"]`);
 
-      completedRadio.addEventListener('change', () => {
+    completedRadio.addEventListener('change', () => {
       item.completed = completedRadio.checked;
       saveTasksToLocalStorage();
     });
@@ -42,8 +41,7 @@ const addTask = (description) => {
     list.push(task);
     saveTasksToLocalStorage();
     displayItemsByIndex();
-
-   }
+  }
 };
 
 document.getElementById('addTaskButton').addEventListener('click', () => {
@@ -85,9 +83,8 @@ function deleteTask(index) {
     }
 
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 // Display tasks
@@ -211,7 +208,6 @@ const editTaskDescriptionInline = (item, deleteButton, deleteIcon, completedRadi
 const saveTasksToLocalStorage = () => {
   localStorage.setItem('todoList', JSON.stringify(list));
 };
-
 
 module.exports = {
   loadTasksFromLocalStorage,

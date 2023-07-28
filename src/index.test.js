@@ -3,26 +3,21 @@ const path = require('path');
 const { describe, test, expect } = require('@jest/globals');
 const jsdom = require('jsdom-global');
 
-// Load the HTML file
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 
-// Set up the DOM environment
 const cleanup = jsdom(html, { runScripts: 'dangerously' });
 const { document } = window;
 
+const app = require('./index.js');
 
-// Load the JavaScript file
-let app = require('./index.js');
-
-// Import the required functions and elements from app.js
 const {
   loadTasksFromLocalStorage,
   attachEventListeners,
   displayItemsByIndex,
   addTask,
-  deleteTask
-} = app
-// Set up the document with the required elements
+  deleteTask,
+} = app;
+
 document.body.innerHTML = `
   <div id="listContainer"></div>
   <input type="text" id="taskInput" />
@@ -53,7 +48,6 @@ loadTasksFromLocalStorage();
 attachEventListeners();
 displayItemsByIndex();
 
-
 describe('addTask', () => {
   it('should not add a task with a blank description', () => {
     const list = [];
@@ -62,11 +56,8 @@ describe('addTask', () => {
   });
 });
 
-
-
 describe('deleteTask', () => {
-
-    it('should not delete a task that does not exist', () => {
+  it('should not delete a task that does not exist', () => {
     const list = [{ description: 'Buy milk', completed: false, index: 1 }];
     const result = deleteTask(2, list);
     expect(result).toBe(false);
