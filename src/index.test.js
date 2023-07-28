@@ -15,7 +15,7 @@ const {
   attachEventListeners,
   displayItemsByIndex,
   editTaskDescription,
-  updateTaskCompletion, 
+  updateTaskCompletion,
   Delete,
 } = app;
 
@@ -49,7 +49,6 @@ loadTasksFromLocalStorage();
 attachEventListeners();
 displayItemsByIndex();
 
-
 describe('editTaskDescription', () => {
   let list;
 
@@ -81,30 +80,29 @@ describe('editTaskDescription', () => {
   });
 });
 
-
 describe('updateTaskCompletion', () => {
   let list;
 
-beforeEach(() => {
-  list = [
-    { description: 'Task 1', completed: false, index: 1 },
-    { description: 'Task 2', completed: false, index: 2 },
-    { description: 'Task 3', completed: false, index: 3 },
-  ];
-});
+  beforeEach(() => {
+    list = [
+      { description: 'Task 1', completed: false, index: 1 },
+      { description: 'Task 2', completed: false, index: 2 },
+      { description: 'Task 3', completed: false, index: 3 },
+    ];
+  });
 
-test('should update the completion status of a task at a given index', () => {
-  const index = 2;
-  const newCompletionStatus = false;
+  test('should update the completion status of a task at a given index', () => {
+    const index = 2;
+    const newCompletionStatus = false;
 
-// mimicking checkbox click
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.setAttribute('data-index', list[index - 2].completed);
-  attachEventListeners(list, checkbox);
+    // mimicking checkbox click
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.setAttribute('data-index', list[index - 2].completed);
+    attachEventListeners(list, checkbox);
 
-  expect(list[index - 2].completed).toEqual(newCompletionStatus);
-});
+    expect(list[index - 2].completed).toEqual(newCompletionStatus);
+  });
 
   test('should not update the completion status if the index is out of bounds', () => {
     const index = 4;
@@ -116,19 +114,16 @@ test('should update the completion status of a task at a given index', () => {
   });
 });
 
-
 describe('clearCompletedTasks', () => {
   let list;
 
   beforeEach(() => {
-
     list = [
       { description: 'Task 1', completed: false, index: 1 },
       { description: 'Task 2', completed: true, index: 2 },
       { description: 'Task 3', completed: true, index: 3 },
     ];
   });
-
 
   test('should not remove any tasks if there are no completed tasks in the list', () => {
     list.forEach((task) => {
@@ -139,5 +134,4 @@ describe('clearCompletedTasks', () => {
 
     expect(list).toEqual(list);
   });
-
 });
