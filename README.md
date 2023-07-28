@@ -15,8 +15,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-  - [💻 Project Presentation](#presentation)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -30,9 +28,9 @@
 
 <!-- PROJECT DESCRIPTION  -->
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 toDo List <a name="about-project"></a>
 
-**Awesome Books** An online task manager that allows users set goals and their follow up on them later.
+**toDo List Books** An online task manager that allows users set goals and their follow up on them later.
 
 ## 🛠 Built With <a name="built-with"></a>
 The app is built using Webpack as a bundler.
@@ -50,14 +48,6 @@ The app is built using Webpack as a bundler.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO  -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-- Comming soon.
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 💻 Project Presentation <a name="presentation"></a>
-- Comming soon
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -78,7 +68,7 @@ Example command:
 
 ### Setup
 - Clone the repository to desired directory on local computer
-> `git clone https://github.com/wacoo/Awesome-Books.git`
+> `https://github.com/paulshaun-kdtk/WebPack_Linked-List`
 
 ## 👥 Author <a name="authors"></a>
 - Instagram: [@_shaun_s](https://www.instagram.com/_.shaun.s_/)
