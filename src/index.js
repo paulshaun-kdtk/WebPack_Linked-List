@@ -63,7 +63,8 @@ const editTaskDescription = (index, newDescription) => {
     saveTasksToLocalStorage();
     displayItemsByIndex();
   } else {
-    alert('Please add a task to initialize the app.');
+    saveTasksToLocalStorage();
+    displayItemsByIndex();
   }
 };
 
@@ -213,6 +214,8 @@ module.exports = {
   loadTasksFromLocalStorage,
   attachEventListeners,
   displayItemsByIndex,
+  editTaskDescription,
   addTask,
   deleteTask,
+  Delete,
 };
